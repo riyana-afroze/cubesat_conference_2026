@@ -3,6 +3,12 @@ import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
 
 const lang = 'en';
+
+const teamMembers = Array.from({ length: 8 }).map((_, i) => ({
+  name: `Team Member ${i + 1}`,
+  role: "Position",
+  bio: `This is the biography for Team Member ${i + 1}. They are an integral part of the Canadian CubeSat Conference team, bringing expertise and passion to the organization. Their work ensures the success of the event.`
+}));
 ---
 
 <Layout title="Team - Canadian CubeSat Conference 2026" lang={lang}>
@@ -11,19 +17,33 @@ const lang = 'en';
   <main class="container">
     <section class="team-section">
       <h1 class="section-title">The Canadian CubeSat Conference Team</h1>
-      <div class="glass-panel">
-        <p class="team-intro">Meet the dedicated team of students and professionals working hard to make this conference a reality.</p>
-        <div class="team-grid">
-          {Array.from({ length: 9 }).map((_, i) => (
-            <div class="team-member">
-              <div class="member-photo-placeholder"></div>
-              <p class="member-name">Team Member {i + 1}</p>
-              <p class="member-role">Position</p>
-            </div>
-          ))}
-        </div>
+      <p class="team-intro">Meet the dedicated team of students and professionals working hard to make this conference a reality.</p>
+      <div class="team-grid">
+        {teamMembers.map((member) => (
+          <div class="team-member" data-bio={member.bio}>
+            <div class="member-photo-placeholder"></div>
+            <p class="member-name">{member.name}</p>
+            <p class="member-role">{member.role}</p>
+          </div>
+        ))}
       </div>
     </section>
+
+    <dialog id="team-modal" class="modal">
+      <div class="modal-content">
+        <button class="close-modal">&times;</button>
+        <div class="modal-body">
+          <div class="modal-image-container">
+             <div class="modal-photo-placeholder"></div>
+          </div>
+          <div class="modal-text">
+            <h2 id="modal-name"></h2>
+            <p id="modal-role"></p>
+            <p id="modal-bio"></p>
+          </div>
+        </div>
+      </div>
+    </dialog>
   </main>
 </Layout>
 
@@ -37,12 +57,19 @@ const lang = 'en';
     margin: 0 auto 3rem;
   }
   .team-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 3rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10rem;
   }
   .team-member {
     text-align: center;
+    width: calc((100% - 20rem) / 3);
+    cursor: pointer;
+  }
+  .team-member:hover .member-photo-placeholder {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(224, 176, 255, 0.4);
   }
   .member-photo-placeholder {
     width: 180px;
@@ -50,21 +77,130 @@ const lang = 'en';
     background: rgba(255,255,255,0.1);
     border-radius: 50%;
     margin: 0 auto 1.5rem;
-    border: 3px solid var(--color-accent);
+    border: 3px solid #e0b0ff;
     transition: transform 0.3s, box-shadow 0.3s;
   }
-  .member-photo-placeholder:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
-  }
+  
   .member-name {
     font-weight: 700;
     font-size: 1.2rem;
     margin-bottom: 0.4rem;
-    color: var(--color-accent);
+    color: #e0b0ff;
   }
   .member-role {
     font-size: 1rem;
     color: var(--color-text-muted);
   }
+
+  /* Modal Styles */
+  .modal {
+    padding: 0;
+    border: none;
+    border-radius: 16px;
+    background: transparent;
+    max-width: 800px;
+    width: 90%;
+    color: white;
+    margin: auto;
+  }
+  .modal::backdrop {
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+  }
+  .modal-content {
+    background: #2c0052; /* Fallback */
+    background: linear-gradient(145deg, rgba(44, 0, 82, 0.95), rgba(19, 0, 43, 0.95));
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 2rem;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  }
+  .close-modal {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    line-height: 1;
+    z-index: 10;
+  }
+  .modal-body {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    align-items: start;
+  }
+  @media (min-width: 768px) {
+    .modal-body {
+      grid-template-columns: 250px 1fr;
+    }
+  }
+  .modal-photo-placeholder {
+    width: 100%;
+    aspect-ratio: 1;
+    background: rgba(255,255,255,0.1);
+    border-radius: 16px;
+    border: 3px solid #e0b0ff;
+  }
+  #modal-name {
+    color: #e0b0ff;
+    margin-top: 0;
+    font-size: 2rem;
+    text-align: center;
+  }
+  #modal-role {
+    color: var(--color-text-muted);
+    font-style: italic;
+    margin-bottom: 1.5rem;
+    font-size: 1.2rem;
+    text-align: center;
+  }
+  #modal-bio {
+    line-height: 1.6;
+  }
 </style>
+
+<script>
+  const modal = document.getElementById('team-modal');
+  const closeBtn = document.querySelector('.close-modal');
+  const teamMembers = document.querySelectorAll('.team-member');
+  
+  const modalName = document.getElementById('modal-name');
+  const modalRole = document.getElementById('modal-role');
+  const modalBio = document.getElementById('modal-bio');
+
+  teamMembers.forEach(member => {
+    member.addEventListener('click', () => {
+      const name = member.querySelector('.member-name').textContent;
+      const role = member.querySelector('.member-role').textContent;
+      const bio = member.dataset.bio;
+
+      modalName.textContent = name;
+      modalRole.textContent = role;
+      modalBio.textContent = bio;
+      
+      modal.showModal();
+    });
+  });
+
+  closeBtn.addEventListener('click', () => {
+    modal.close();
+  });
+
+  modal.addEventListener('click', (e) => {
+    const rect = modal.getBoundingClientRect();
+    const isInDialog = (
+      e.clientY >= rect.top &&
+      rect.top + rect.height >= e.clientY &&
+      e.clientX >= rect.left &&
+      rect.left + rect.width >= e.clientX
+    );
+    if (!isInDialog) {
+      modal.close();
+    }
+  });
+</script>
