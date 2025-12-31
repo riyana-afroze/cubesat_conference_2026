@@ -1,0 +1,179 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+
+// Using same links
+const links = {
+  tickets: "https://www.eventbrite.ca/e/canadian-cubesat-conference-2026-tickets-1978812632853",
+  booth: "https://forms.gle/eZspouYDYaU9VHhP7",
+  abstract: "https://forms.gle/CyHb6SH9Y1QRS75o9",
+  ccn: "https://forms.gle/BvUL7nxkMFcam9sz6",
+  csa_funding: "https://www.asc-csa.gc.ca/eng/funding-programs/funding-opportunities/ao/2023-canadian-student-participation-in-space-conferences-and-training-events.asp",
+  seds: "https://www.seds.ca/",
+  spaceconcordia: "https://spaceconcordia.ca/"
+};
+---
+
+<Layout title="Conférence canadienne sur les CubeSats 2026" lang="fr">
+  <Header lang="fr" />
+  
+  <main class="container">
+    <!-- Hero Section -->
+    <section class="hero glass-panel">
+      <h1 class="hero-title">ONFÉRENCE CANADIENNE SUR LES CUBESATS 2026</h1>
+      <p class="hero-subtitle">Explorer l'avenir des petits satellites</p>
+      <div class="cta-group">
+        <a href={links.tickets} class="btn">Acheter des billets</a>
+        <a href={links.booth} class="btn btn-outline">Réserver un stand</a>
+        <a href={links.abstract} class="btn btn-outline">Soumettre un résumé</a>
+      </div>
+    </section>
+
+    <!-- Section 1: About CCC -->
+    <section class="info-section">
+      <h2 class="section-title">À propos de la Conférence canadienne sur les CubeSats</h2>
+      <div class="glass-panel">
+        <p>
+          La Conférence canadienne sur les CubeSats 2026 rassemble des étudiants, des chefs de file de l'industrie et des chercheurs pour discuter des dernières avancées technologiques des CubeSats. Rejoignez-nous pour un week-end d'ateliers, de réseautage et de conférences inspirantes des leaders du secteur spatial canadien.
+        </p>
+      </div>
+    </section>
+
+    <!-- Section 2: About CCN -->
+    <section class="info-section">
+      <h2 class="section-title">À propos du Réseau canadien de CubeSats</h2>
+      <div class="glass-panel">
+        <p>
+          Le Réseau canadien de CubeSats (RCC) relie les équipes d'étudiants à travers le pays pour partager des connaissances, des ressources et des opportunités.
+        </p>
+        <a href={links.ccn} class="btn">Devenir associé du RCC</a>
+      </div>
+    </section>
+
+    <!-- Section 3: Funding Opportunity -->
+    <section class="info-section">
+      <h2 class="section-title">Opportunité de financement</h2>
+      <div class="glass-panel highlight-panel">
+        <h3>Financement de l'ASC pour assister à la CCC 2026</h3>
+        <p>
+          Bonne nouvelle pour les étudiants ! L'Agence spatiale canadienne (ASC) offre un financement pour soutenir la participation des étudiants aux conférences spatiales. Ce financement peut aider à couvrir les frais de voyage et d'hébergement pour les étudiants éligibles assistant à la Conférence canadienne sur les CubeSats.
+        </p>
+        <a href={links.csa_funding} class="btn">Postuler maintenant</a>
+      </div>
+    </section>
+
+    <!-- Section 4 & 5: SEDS & SpaceConcordia -->
+    <div class="grid-2">
+      <section class="info-section">
+        <h2 class="section-title">À propos de SÉDS-Canada</h2>
+        <div class="glass-panel">
+          <p>
+            SÉDS-Canada est un organisme national à but non lucratif géré par des étudiants, voué à la promotion et à l'exploration de l'espace.
+          </p>
+          <a href={links.seds} class="btn btn-secondary">Visiter SÉDS-Canada</a>
+        </div>
+      </section>
+
+      <section class="info-section">
+        <h2 class="section-title">À propos de SpaceConcordia</h2>
+        <div class="glass-panel">
+          <p>
+            SpaceConcordia est une société gérée par des étudiants de l'Université Concordia dédiée à l'ingénierie et à l'exploration spatiales.
+          </p>
+          <a href={links.spaceconcordia} class="btn btn-secondary">Visiter SpaceConcordia</a>
+        </div>
+      </section>
+    </div>
+
+
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2026 Conférence canadienne sur les CubeSats</p>
+  </footer>
+</Layout>
+
+<style>
+  /* Reuse styles from English page basically, but we need to declare them or import them. 
+     Since Astro scopes styles, I'll copy the critical structure styles or move them to global if strict sharing is needed.
+     For speed and isolation, copying the layout styles is fine. 
+  */
+  .hero {
+    text-align: center;
+    padding: 4rem 2rem;
+    margin-top: 2rem;
+  }
+  .hero-title {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    background: linear-gradient(to right, #fff, #ff00ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .hero-subtitle {
+    font-size: 1.5rem;
+    color: var(--color-accent);
+    margin-bottom: 3rem;
+  }
+  .cta-group {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .btn-outline {
+    background: transparent;
+    border: 2px solid var(--color-primary);
+  }
+  .btn-outline:hover {
+    background: var(--color-primary);
+  }
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  @media (min-width: 768px) {
+    .grid-2 {
+        grid-template-columns: 1fr 1fr;
+    }
+  }
+  .team-intro {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto 2rem;
+  }
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+  }
+  .team-member {
+    text-align: center;
+  }
+  .member-photo-placeholder {
+    width: 150px;
+    height: 150px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 50%;
+    margin: 0 auto 1rem;
+    border: 2px solid var(--color-accent);
+  }
+  .member-name {
+    font-weight: 700;
+    margin-bottom: 0.2rem;
+    color: var(--color-accent);
+  }
+  .member-role {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+  }
+  .site-footer {
+    text-align: center;
+    padding: 2rem;
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+  }
+</style>

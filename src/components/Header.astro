@@ -1,0 +1,72 @@
+---
+interface Props {
+  lang: 'en' | 'fr';
+}
+
+const { lang } = Astro.props;
+
+const isEn = lang === 'en';
+
+const homeLink = isEn ? '/en/' : '/fr/';
+const teamLink = isEn ? '/en/team' : '/fr/team';
+const contactLink = isEn ? '/en/contact' : '/fr/contact';
+
+const homeText = isEn ? 'Home' : 'Accueil';
+const teamText = isEn ? 'Team' : 'Équipe';
+const contactText = isEn ? 'Contact' : 'Contact';
+
+const currentPath = Astro.url.pathname;
+
+// Helper to check active state
+const isActive = (path: string) => {
+    // Exact match for home, or starts with for others (stripping trailing slashes)
+    const cleanCurrent = currentPath.replace(/\/$/, '');
+    const cleanPath = path.replace(/\/$/, '');
+    return cleanCurrent === cleanPath;
+};
+
+// Toggle paths
+const toEn = currentPath.replace('/fr', '/en');
+const toFr = currentPath.replace('/en', '/fr');
+---
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href={homeLink} class="logo">
+      CubeSat 2026
+    </a>
+    
+    <nav class="main-nav">
+      <a href={homeLink} class:list={["header-nav-link", { active: isActive(homeLink) }]}>{homeText}</a>
+      <a href={teamLink} class:list={["header-nav-link", { active: isActive(teamLink) }]}>{teamText}</a>
+      <a href={contactLink} class:list={["header-nav-link", { active: isActive(contactLink) }]}>{contactText}</a>
+    </nav>
+
+    <div class="lang-switch">
+       <a href={toEn} class:list={["lang-btn", { active: isEn }]}>English</a>
+       <a href={toFr} class:list={["lang-btn", { active: !isEn }]}>Français</a>
+    </div>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    padding: 1.5rem 0;
+    width: 100%;
+    z-index: 100;
+  }
+  .header-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .logo {
+    font-weight: 800;
+    font-size: 1.8rem;
+    color: white;
+  }
+  .main-nav {
+    display: flex;
+    gap: 2rem;
+  }
+</style>

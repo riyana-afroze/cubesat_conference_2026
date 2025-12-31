@@ -1,0 +1,70 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+
+const lang = 'en';
+---
+
+<Layout title="Team - Canadian CubeSat Conference 2026" lang={lang}>
+  <Header lang={lang} />
+  
+  <main class="container">
+    <section class="team-section">
+      <h1 class="section-title">The Canadian CubeSat Conference Team</h1>
+      <div class="glass-panel">
+        <p class="team-intro">Meet the dedicated team of students and professionals working hard to make this conference a reality.</p>
+        <div class="team-grid">
+          {Array.from({ length: 9 }).map((_, i) => (
+            <div class="team-member">
+              <div class="member-photo-placeholder"></div>
+              <p class="member-name">Team Member {i + 1}</p>
+              <p class="member-role">Position</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .team-section {
+    padding: 4rem 0;
+  }
+  .team-intro {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto 3rem;
+  }
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 3rem;
+  }
+  .team-member {
+    text-align: center;
+  }
+  .member-photo-placeholder {
+    width: 180px;
+    height: 180px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 50%;
+    margin: 0 auto 1.5rem;
+    border: 3px solid var(--color-accent);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .member-photo-placeholder:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+  }
+  .member-name {
+    font-weight: 700;
+    font-size: 1.2rem;
+    margin-bottom: 0.4rem;
+    color: var(--color-accent);
+  }
+  .member-role {
+    font-size: 1rem;
+    color: var(--color-text-muted);
+  }
+</style>
