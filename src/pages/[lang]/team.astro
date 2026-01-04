@@ -1,0 +1,26 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import TeamPage from '../../components/TeamPage.astro';
+import { getContent } from '../../i18n/content';
+
+export function getStaticPaths() {
+  return [
+    { params: { lang: 'en' } },
+    { params: { lang: 'fr' } },
+  ];
+}
+
+const { lang } = Astro.params;
+const content = getContent(lang as 'en' | 'fr');
+
+const titles = {
+  en: 'Team - Canadian CubeSat Conference 2026',
+  fr: 'Équipe - Conférence canadienne sur les CubeSats 2026',
+};
+---
+
+<Layout title={titles[lang as keyof typeof titles]} lang={lang as 'en' | 'fr'}>
+  <Header lang={lang as 'en' | 'fr'} />
+  <TeamPage content={content.team} teamMembers={content.teamMembers} />
+</Layout>

@@ -1,0 +1,258 @@
+---
+interface TeamMember {
+  name: string;
+  role: string;
+  bio: string;
+  image?: string;
+}
+
+interface Props {
+  content: {
+    title: string;
+    intro: string;
+    readMore: string;
+  };
+  teamMembers: TeamMember[];
+}
+
+const { content, teamMembers } = Astro.props;
+---
+
+<main class="container">
+  <section class="team-section">
+    <h1 class="section-title">{content.title}</h1>
+    <p class="team-intro">{content.intro}</p>
+    <div class="team-grid">
+      {teamMembers.map((member) => (
+        <div class="team-member" data-bio={member.bio} data-image={member.image || ''} data-name={member.name} data-role={member.role}>
+          <div class="member-photo-placeholder">
+            {member.image && <img src={member.image} alt={member.name} />}
+          </div>
+          <p class="member-name">{member.name}</p>
+          <p class="member-role" set:html={member.role}></p>
+          <p class="member-bio-preview">
+            {member.bio.substring(0, 70)}... <span class="read-more">{content.readMore}</span>
+          </p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <dialog id="team-modal" class="modal">
+    <div class="modal-content">
+      <button class="close-modal">&times;</button>
+      <div class="modal-body">
+        <div class="modal-image-container">
+          <div class="modal-photo-placeholder" id="modal-photo-container"></div>
+        </div>
+        <div class="modal-text">
+          <h2 id="modal-name"></h2>
+          <p id="modal-role"></p>
+          <p id="modal-bio"></p>
+        </div>
+      </div>
+    </div>
+  </dialog>
+</main>
+
+<style>
+  .team-section {
+    padding: 4rem 0;
+  }
+  .team-intro {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto 3rem;
+  }
+  .team-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 4rem 10rem;
+  }
+  .team-member {
+    text-align: center;
+    width: calc((100% - 20rem) / 3);
+    cursor: pointer;
+  }
+  .team-member:hover .member-photo-placeholder {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(224, 176, 255, 0.4);
+  }
+  .member-photo-placeholder {
+    width: 180px;
+    height: 180px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 50%;
+    margin: 0 auto 1.5rem;
+    border: 3px solid #e0b0ff;
+    transition: transform 0.3s, box-shadow 0.3s;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .member-photo-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+  
+  .member-name {
+    font-weight: 700;
+    font-size: 1.2rem;
+    margin-bottom: 0.4rem;
+    color: #e0b0ff;
+  }
+  .member-role {
+    font-size: 1rem;
+    color: var(--color-text-muted);
+  }
+  .member-bio-preview {
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+    line-height: 1.4;
+    color: #ccc;
+  }
+  .read-more {
+    color: #e0b0ff;
+    font-size: 0.85rem;
+  }
+
+  /* Modal Styles */
+  .modal {
+    padding: 0;
+    border: none;
+    border-radius: 16px;
+    background: transparent;
+    max-width: 1400px;
+    width: 70%;
+    color: white;
+    margin: auto;
+  }
+  .modal::backdrop {
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+  }
+  .modal-content {
+    background: #461478;
+    background: linear-gradient(145deg, rgba(70, 20, 120, 0.95), rgba(40, 10, 80, 0.95));
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 2rem 6rem;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    min-height: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .close-modal {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    line-height: 1;
+    z-index: 10;
+  }
+  .modal-body {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+    align-items: center;
+  }
+  @media (min-width: 768px) {
+    .modal-body {
+      grid-template-columns: 250px 1fr;
+      gap: 5rem;
+    }
+  }
+  .modal-image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .modal-photo-placeholder {
+    width: 100%;
+    aspect-ratio: 1;
+    background: rgba(255,255,255,0.1);
+    border-radius: 50%;
+    border: 3px solid #e0b0ff;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .modal-photo-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+  #modal-name {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    color: #e0b0ff;
+  }
+  #modal-role {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    color: var(--color-text-muted);
+  }
+  #modal-bio {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: white;
+    white-space: pre-wrap;
+  }
+  #modal-bio p {
+    margin-bottom: 1rem;
+  }
+</style>
+
+<script>
+  const modal = document.getElementById('team-modal') as HTMLDialogElement;
+  const closeBtn = document.querySelector('.close-modal');
+  const teamMembers = document.querySelectorAll('.team-member');
+  
+  const modalName = document.getElementById('modal-name');
+  const modalRole = document.getElementById('modal-role');
+  const modalBio = document.getElementById('modal-bio');
+  const modalPhotoContainer = document.getElementById('modal-photo-container');
+
+  teamMembers.forEach((member) => {
+    member.addEventListener('click', () => {
+      const name = member.getAttribute('data-name');
+      const role = member.getAttribute('data-role');
+      const bio = member.getAttribute('data-bio');
+      const image = member.getAttribute('data-image');
+
+      if (modalName) modalName.textContent = name || '';
+      if (modalRole) modalRole.innerHTML = role || '';
+      if (modalBio) modalBio.textContent = bio || '';
+      
+      if (modalPhotoContainer) {
+        modalPhotoContainer.innerHTML = image 
+          ? `<img src="${image}" alt="${name}" />` 
+          : '';
+      }
+
+      modal?.showModal();
+    });
+  });
+
+  closeBtn?.addEventListener('click', () => {
+    modal?.close();
+  });
+
+  modal?.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      modal.close();
+    }
+  });
+</script>
