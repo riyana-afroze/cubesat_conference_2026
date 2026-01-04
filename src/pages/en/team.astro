@@ -8,6 +8,7 @@ const teamMembers = [
   {
     name: "Riyana Afroze",
     role: "Conference Lead, Web Developer<br>Deputy Projects Chair",
+    image: "/people/riyana.png",
     bio: `Riyana is a 4th-year Mechatronics Engineering student studying at Memorial University of Newfoundland. As the Deputy Projects Chair at SEDS-Canada, Riyana plays an instrumental role in overseeing coordination between the Project Managers and Coordinators of the four national projects (CAN-RGX, CAN-SBX, YSpacE, and the Canadian CubeSat Network) and the organization’s Board of Directors. She has been a member of the SEDS-Canada Board of Directors since January 2025 during which she re-launched YSpacE (Young Space Entrepreneurs Competition) and pioneered the Canadian CubeSat Network. Riyana is also a Co-Founder and Co-Chair of Women of SEDS (wSEDS) and was instrumental in delivering the first-ever conference celebrating women in the space sector in Canada, last July.
 
 Outside of her role at SEDS-Canada, Riyana is focused on the development and launch of Newfoundland’s first high-power rocket for Launch Canada 2026 as the Founder and Team Captain of Horizon Aerospace - the first rocketry team at Memorial University and the only amateur rocketry club in the province of NL. She is also the Attitude Determination and Control System (ADCS) Lead for MUNStar-1 CubeSat to be launched under the Canadian Space Agency’s CUBICS initiative.
@@ -31,8 +32,10 @@ Through her work across engineering, leadership, and entrepreneurship, Riyana is
       <p class="team-intro">Meet the dedicated team of students working hard to make this conference a reality.</p>
       <div class="team-grid">
         {teamMembers.map((member) => (
-          <div class="team-member" data-bio={member.bio}>
-            <div class="member-photo-placeholder"></div>
+          <div class="team-member" data-bio={member.bio} data-image={member.image || ''}>
+            <div class="member-photo-placeholder">
+              {member.image && <img src={member.image} alt={member.name} />}
+            </div>
             <p class="member-name">{member.name}</p>
             <p class="member-role" set:html={member.role}></p>
             <p class="member-bio-preview">
@@ -48,7 +51,7 @@ Through her work across engineering, leadership, and entrepreneurship, Riyana is
         <button class="close-modal">&times;</button>
         <div class="modal-body">
           <div class="modal-image-container">
-             <div class="modal-photo-placeholder"></div>
+             <div class="modal-photo-placeholder" id="modal-photo-container"></div>
           </div>
           <div class="modal-text">
             <h2 id="modal-name"></h2>
@@ -93,6 +96,15 @@ Through her work across engineering, leadership, and entrepreneurship, Riyana is
     margin: 0 auto 1.5rem;
     border: 3px solid #e0b0ff;
     transition: transform 0.3s, box-shadow 0.3s;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .member-photo-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
   
   .member-name {
@@ -179,6 +191,16 @@ Through her work across engineering, leadership, and entrepreneurship, Riyana is
     background: rgba(255,255,255,0.1);
     border-radius: 50%;
     border: 3px solid #e0b0ff;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .modal-photo-placeholder img {
+    width: 120%;
+    height: 120%;
+    object-fit: cover;
+    object-position: center;
   }
   #modal-name {
     color: #e0b0ff;
@@ -210,16 +232,27 @@ Through her work across engineering, leadership, and entrepreneurship, Riyana is
   const modalName = document.getElementById('modal-name');
   const modalRole = document.getElementById('modal-role');
   const modalBio = document.getElementById('modal-bio');
+  const modalPhotoContainer = document.getElementById('modal-photo-container');
 
   teamMembers.forEach(member => {
     member.addEventListener('click', () => {
       const name = member.querySelector('.member-name').textContent;
       const role = member.querySelector('.member-role').innerHTML;
       const bio = member.dataset.bio;
+      const image = member.dataset.image;
 
       modalName.textContent = name;
       modalRole.innerHTML = role;
       modalBio.innerHTML = '';
+      
+      // Handle image
+      modalPhotoContainer.innerHTML = '';
+      if (image) {
+        const img = document.createElement('img');
+        img.src = image;
+        img.alt = name;
+        modalPhotoContainer.appendChild(img);
+      }
       
       const paragraphs = bio.split('\n\n').filter(p => p.trim());
       paragraphs.forEach(paragraph => {
