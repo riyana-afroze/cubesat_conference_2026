@@ -1,0 +1,103 @@
+---
+interface Props {
+  content: {
+    title: string;
+    intro: string;
+    emailText: string;
+    form: {
+      name: string;
+      email: string;
+      subject: string;
+      message: string;
+      submit: string;
+    };
+    placeholders: {
+      name: string;
+      email: string;
+      subject: string;
+      message: string;
+    };
+  };
+}
+
+const { content } = Astro.props;
+---
+
+<main class="container">
+  <section class="contact-section glass-panel">
+    <h1 class="section-title">{content.title}</h1>
+    <p class="contact-intro" set:html={content.intro}></p>
+
+    <form class="contact-form" action="mailto:cubesat@seds.ca" method="post" enctype="text/plain">
+      <div class="form-group">
+        <label for="name">{content.form.name}</label>
+        <input type="text" id="name" name="name" required placeholder={content.placeholders.name} />
+      </div>
+      
+      <div class="form-group">
+        <label for="email">{content.form.email}</label>
+        <input type="email" id="email" name="email" required placeholder={content.placeholders.email} />
+      </div>
+      
+      <div class="form-group">
+        <label for="subject">{content.form.subject}</label>
+        <input type="text" id="subject" name="subject" required placeholder={content.placeholders.subject} />
+      </div>
+      
+      <div class="form-group">
+        <label for="message">{content.form.message}</label>
+        <textarea id="message" name="message" required rows="6" placeholder={content.placeholders.message}></textarea>
+      </div>
+      
+      <button type="submit" class="btn btn-submit">{content.form.submit}</button>
+    </form>
+  </section>
+</main>
+
+<style>
+  .contact-section {
+    max-width: 800px;
+    margin: 4rem auto;
+  }
+  .contact-intro {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  .link-highlight {
+    color: #e0b0ff;
+    text-decoration: underline;
+  }
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  label {
+    font-weight: 600;
+    color: #e0b0ff;
+  }
+  input, textarea {
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(0,0,0,0.2);
+    color: white;
+    font-family: inherit;
+    font-size: 1rem;
+  }
+  input:focus, textarea:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    background: rgba(0,0,0,0.3);
+  }
+  .btn-submit {
+    align-self: flex-start;
+    margin-top: 1rem;
+    width: 100%;
+  }
+</style>
