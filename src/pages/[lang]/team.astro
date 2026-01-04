@@ -3,6 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
 import TeamPage from '../../components/TeamPage.astro';
 import { getContent } from '../../i18n/content';
+import { getCollection } from 'astro:content';
 
 export function getStaticPaths() {
   return [
@@ -14,6 +15,18 @@ export function getStaticPaths() {
 const { lang } = Astro.params;
 const content = getContent(lang as 'en' | 'fr');
 
+// Get all team members and sort by order
+const allTeamMembers = await getCollection('team');
+const sortedTeamMembers = allTeamMembers.sort((a, b) => a.data.order - b.data.order);
+
+// Transform team members to the format expected by TeamPage
+const teamMembers = sortedTeamMembers.map(member => ({
+  name: member.data.name,
+  role: member.data.role[lang as 'en' | 'fr'],
+  bio: lang === 'fr' && member.data.bioFr ? member.data.bioFr : member.data.bio,
+  image: member.data.image,
+}));
+
 const titles = {
   en: 'Team - Canadian CubeSat Conference 2026',
   fr: 'Équipe - Conférence canadienne sur les CubeSats 2026',
@@ -22,5 +35,5 @@ const titles = {
 
 <Layout title={titles[lang as keyof typeof titles]} lang={lang as 'en' | 'fr'}>
   <Header lang={lang as 'en' | 'fr'} />
-  <TeamPage content={content.team} teamMembers={content.teamMembers} />
+  <TeamPage content={content.team} teamMembers={teamMembers} />
 </Layout>

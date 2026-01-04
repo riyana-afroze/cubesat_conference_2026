@@ -67,21 +67,3 @@ export const contactPageContent = {
     message: "Votre message ici..."
   }
 };
-
-export const teamMembers = [
-  {
-    name: "Riyana Afroze",
-    role: "Chef de conférence, Développeuse Web<br>Vice-présidente des projets",
-    image: "/people/riyana.png",
-    bio: `Riyana est une étudiante de 4e année en génie mécatronique à l'Université Memorial de Terre-Neuve. En tant que vice-présidente des projets chez SEDS-Canada, Riyana joue un rôle déterminant dans la supervision de la coordination entre les gestionnaires de projet et les coordinateurs des quatre projets nationaux (CAN-RGX, CAN-SBX, YSpacE et le Réseau canadien de CubeSat) et le conseil d'administration de l'organisation. Elle est membre du conseil d'administration de SEDS-Canada depuis janvier 2025, période au cours de laquelle elle a relancé YSpacE (Concours des jeunes entrepreneurs de l'espace) et a été pionnière du Réseau canadien de CubeSat. Riyana est également cofondatrice et coprésidente de Women of SEDS (wSEDS) et a joué un rôle déterminant dans l'organisation de la toute première conférence célébrant les femmes dans le secteur spatial au Canada, en juillet dernier.
-
-En dehors de son rôle chez SEDS-Canada, Riyana se concentre sur le développement et le lancement de la première fusée à haute puissance de Terre-Neuve pour Launch Canada 2026 en tant que fondatrice et capitaine d'équipe de Horizon Aerospace - la première équipe de fusées à l'Université Memorial et le seul club de fusées amateur de la province de Terre-Neuve-et-Labrador. Elle est également responsable du système de détermination et de contrôle d'attitude (ADCS) pour le CubeSat MUNStar-1 qui sera lancé dans le cadre de l'initiative CUBICS de l'Agence spatiale canadienne.
-
-Grâce à son travail dans les domaines de l'ingénierie, du leadership et de l'entrepreneuriat, Riyana se concentre sur la création d'initiatives ambitieuses dirigées par des étudiants qui renforcent l'écosystème spatial canadien et élargissent l'accès aux projets spatiaux pratiques.`
-  },
-  ...Array.from({ length: 7 }).map((_, i) => ({
-    name: `Membre de l'équipe ${i + 2}`,
-    role: "Poste",
-    bio: `Ceci est la biographie du membre de l'équipe ${i + 2}. Ils font partie intégrante de l'équipe de la Conférence canadienne sur les CubeSats, apportant expertise et passion à l'organisation. Leur travail assure le succès de l'événement.`
-  }))
-];

@@ -67,21 +67,3 @@ export const contactPageContent = {
     message: "Your message here..."
   }
 };
-
-export const teamMembers = [
-  {
-    name: "Riyana Afroze",
-    role: "Conference Lead, Web Developer<br>Deputy Projects Chair",
-    image: "/people/riyana.png",
-    bio: `Riyana is a 4th-year Mechatronics Engineering student studying at Memorial University of Newfoundland. As the Deputy Projects Chair at SEDS-Canada, Riyana plays an instrumental role in overseeing coordination between the Project Managers and Coordinators of the four national projects (CAN-RGX, CAN-SBX, YSpacE, and the Canadian CubeSat Network) and the organization's Board of Directors. She has been a member of the SEDS-Canada Board of Directors since January 2025 during which she re-launched YSpacE (Young Space Entrepreneurs Competition) and pioneered the Canadian CubeSat Network. Riyana is also a Co-Founder and Co-Chair of Women of SEDS (wSEDS) and was instrumental in delivering the first-ever conference celebrating women in the space sector in Canada, last July.
-
-Outside of her role at SEDS-Canada, Riyana is focused on the development and launch of Newfoundland's first high-power rocket for Launch Canada 2026 as the Founder and Team Captain of Horizon Aerospace - the first rocketry team at Memorial University and the only amateur rocketry club in the province of NL. She is also the Attitude Determination and Control System (ADCS) Lead for MUNStar-1 CubeSat to be launched under the Canadian Space Agency's CUBICS initiative.
-
-Through her work across engineering, leadership, and entrepreneurship, Riyana is focused on building ambitious, student-led initiatives that strengthen Canada's space ecosystem and expand access to hands-on space projects.`
-  },
-  ...Array.from({ length: 7 }).map((_, i) => ({
-    name: `Team Member ${i + 2}`,
-    role: "Position",
-    bio: `This is the biography for Team Member ${i + 2}. They are an integral part of the Canadian CubeSat Conference team, bringing expertise and passion to the organization. Their work ensures the success of the event.`
-  }))
-];
