@@ -1,7 +1,7 @@
 name: "Riyana Afroze"
 role:
   en: "Conference Lead, Web Developer<br>Deputy Projects Chair"
-  fr: "Chef de conférence, Développeuse Web<br>Vice-présidente des projets"
+  # fr: "Chef de conférence, Développeuse Web<br>Vice-présidente des projets"
 image: "/people/riyana.png"
 order: 1
 bio: |

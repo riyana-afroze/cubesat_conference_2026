@@ -6,7 +6,7 @@ const teamCollection = defineCollection({
     name: z.string(),
     role: z.object({
       en: z.string(),
-      fr: z.string().optional(),
+      fr: z.string(),
     }),
     image: z.string().optional(),
     bio: z.string(),
