@@ -43,7 +43,9 @@ const { content, teamMembers } = Astro.props;
       <button class="close-modal">&times;</button>
       <div class="modal-body">
         <div class="modal-image-container">
-          <div class="modal-photo-placeholder" id="modal-photo-container"></div>
+          <div class="modal-photo-placeholder">
+            <img id="modal-image" src="" alt="" />
+          </div>
         </div>
         <div class="modal-text">
           <h2 id="modal-name"></h2>
@@ -179,6 +181,7 @@ const { content, teamMembers } = Astro.props;
   }
   .modal-photo-placeholder {
     width: 100%;
+    max-width: 250px;
     aspect-ratio: 1;
     background: rgba(255,255,255,0.1);
     border-radius: 50%;
@@ -193,6 +196,11 @@ const { content, teamMembers } = Astro.props;
     height: 100%;
     object-fit: cover;
     object-position: center;
+    flex-shrink: 0;
+    display: none;
+  }
+  .modal-photo-placeholder img[src]:not([src=""]) {
+    display: block;
   }
   #modal-name {
     font-size: 2rem;
@@ -223,7 +231,7 @@ const { content, teamMembers } = Astro.props;
   const modalName = document.getElementById('modal-name');
   const modalRole = document.getElementById('modal-role');
   const modalBio = document.getElementById('modal-bio');
-  const modalPhotoContainer = document.getElementById('modal-photo-container');
+  const modalImage = document.getElementById('modal-image') as HTMLImageElement;
 
   teamMembers.forEach((member) => {
     member.addEventListener('click', () => {
@@ -236,10 +244,9 @@ const { content, teamMembers } = Astro.props;
       if (modalRole) modalRole.innerHTML = role || '';
       if (modalBio) modalBio.textContent = bio || '';
       
-      if (modalPhotoContainer) {
-        modalPhotoContainer.innerHTML = image 
-          ? `<img src="${image}" alt="${name}" />` 
-          : '';
+      if (modalImage) {
+        modalImage.src = image || '';
+        modalImage.alt = name || '';
       }
 
       modal?.showModal();
