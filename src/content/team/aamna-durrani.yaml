@@ -1,0 +1,10 @@
+name: "Aamna Durrani"
+role:
+  en: "External Relations Lead<br>CubeSat Network Coordinator"
+  #fr: "Poste"
+order: 5
+image: "/people/aamna.png"  
+bio: |
+  Aamna is a Mathematics and Statistics student at McMaster University with a keen interest in data science and space technology. She is a CubeSat Network Coordinator, where she plays a key role in managing the growth of small satellite projects across Canadian universities. Aamna is passionate about space exploration and is driven by the potential of technology to transform industries. Outside of her academic and professional work, she enjoys exploring innovative solutions to real-world challenges, particularly through the intersection of AI and space.
+# bioFr: |  # Optional - will use English bio if not provided
+#   Ceci est la biographie du membre de l'équipe 2.

@@ -1,10 +1,10 @@
-name: "Team Member 2"
+name: "Ilhem Lazizi"
 role:
-  en: "Position"
+  en: "Speaker's Lead, French Translator<br>CubeSat Coordinator"
   # fr: "Poste"  # Optional - will use English if not provided
 order: 2
 # image: "/people/member-2.png"  # Uncomment when you add a photo
 bio: |
-  This is the biography for Team Member 2. They are an integral part of the Canadian CubeSat Conference team, bringing expertise and passion to the organization. Their work ensures the success of the event.
+  Bio and headshot will be available shortly
 # bioFr: |  # Optional - will use English bio if not provided
 #   Ceci est la biographie du membre de l'équipe 2.
