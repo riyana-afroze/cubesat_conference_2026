@@ -1,0 +1,10 @@
+name: "Mridul"
+role:
+  en: "Internal Relations Lead"
+  # fr: "Poste"
+order: 4
+image: "/people/mridul.png"  
+bio: |
+  Mridul is a 3rd year Software Engineering student at Concordia University. She is the director of external events at Space Concordia and previously held the position of Equity, Diversity and Inclusion Representative at the Engineering and Computer Science Association of Concordia University. She is responsible for managing the Internal Relations for CCC at SEDS-Canada.
+# bioFr: |
+#   Ceci est la biographie du membre de l'équipe 4. Ils font partie intégrante de l'équipe de la Conférence canadienne sur les CubeSats, apportant expertise et passion à l'organisation. Leur travail assure le succès de l'événement.

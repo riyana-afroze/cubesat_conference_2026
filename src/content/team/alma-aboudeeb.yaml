@@ -1,0 +1,10 @@
+name: "Alma Aboudeeb"
+role:
+  en: "Logistics Lead"
+  #fr: "Poste"
+order: 6
+# image: "/people/member-5.png"  # Uncomment when you add a photo
+bio: |
+  Bio and headshot will be available shortly. 
+# bioFr: |
+#   Ceci est la biographie du membre de l'équipe 5. Ils font partie intégrante de l'équipe de la Conférence canadienne sur les CubeSats, apportant expertise et passion à l'organisation. Leur travail assure le succès de l'événement.
