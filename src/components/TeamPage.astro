@@ -93,6 +93,10 @@ const { content, teamMembers } = Astro.props;
       width: 100%;
       max-width: 300px;
     }
+    .member-name,
+    .member-role {
+      text-align: center;
+    }
   }
   .team-member:hover .member-photo-placeholder {
     transform: scale(1.05);
@@ -260,7 +264,7 @@ const { content, teamMembers } = Astro.props;
     }
     #modal-bio {
       font-size: 0.95rem;
-      text-align: left;
+      text-align: justify;
     }
     .modal-photo-placeholder {
       max-width: 180px;
