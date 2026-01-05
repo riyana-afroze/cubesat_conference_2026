@@ -1,4 +1,16 @@
 ---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import HomePage from '../components/HomePage.astro';
+import { getContent } from '../i18n/content';
+
+const lang = 'en';
+const content = getContent(lang);
+
+const title = 'Canadian CubeSat Conference 2026';
 ---
 
-<meta http-equiv="refresh" content="0;url=/en/" />
+<Layout title={title} lang={lang}>
+  <Header lang={lang} />
+  <HomePage content={content.home} />
+</Layout>

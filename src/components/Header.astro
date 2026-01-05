@@ -17,13 +17,13 @@ const isActive = (path: string) => {
 };
 
 // Build language-aware links
-const homeLink = `/${lang}/`;
-const teamLink = `/${lang}/team`;
-const contactLink = `/${lang}/contact`;
+const homeLink = lang === 'en' ? '/' : `/${lang}/`;
+const teamLink = lang === 'en' ? '/team' : `/${lang}/team`;
+const contactLink = lang === 'en' ? '/contact' : `/${lang}/contact`;
 
 // Toggle paths for language switching
-const toEn = currentPath.replace('/fr', '/en');
-const toFr = currentPath.replace('/en', '/fr');
+const toEn = currentPath.replace(/^\/fr/, '') || '/';
+const toFr = '/fr' + (currentPath === '/' ? '/' : currentPath);
 
 const isEn = lang === 'en';
 

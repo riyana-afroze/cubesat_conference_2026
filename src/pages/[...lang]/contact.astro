@@ -1,26 +1,27 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
-import HomePage from '../../components/HomePage.astro';
+import ContactPage from '../../components/ContactPage.astro';
 import { getContent } from '../../i18n/content';
 
 export function getStaticPaths() {
   return [
-    { params: { lang: 'en' } },
+    { params: { lang: undefined } }, // English (default) at root
     { params: { lang: 'fr' } },
   ];
 }
 
-const { lang } = Astro.params;
+const { lang: langParam } = Astro.params;
+const lang = langParam || 'en';
 const content = getContent(lang as 'en' | 'fr');
 
 const titles = {
-  en: 'Canadian CubeSat Conference 2026',
-  fr: 'Conférence canadienne sur les CubeSats 2026',
+  en: 'Contact Us - Canadian CubeSat Conference 2026',
+  fr: 'Contactez-nous - Conférence canadienne sur les CubeSats 2026',
 };
 ---
 
 <Layout title={titles[lang as keyof typeof titles]} lang={lang as 'en' | 'fr'}>
   <Header lang={lang as 'en' | 'fr'} />
-  <HomePage content={content.home} />
+  <ContactPage content={content.contact} />
 </Layout>

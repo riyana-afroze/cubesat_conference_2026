@@ -7,12 +7,13 @@ import { getCollection } from 'astro:content';
 
 export function getStaticPaths() {
   return [
-    { params: { lang: 'en' } },
+    { params: { lang: undefined } }, // English (default) at root
     { params: { lang: 'fr' } },
   ];
 }
 
-const { lang } = Astro.params;
+const { lang: langParam } = Astro.params;
+const lang = langParam || 'en';
 const content = getContent(lang as 'en' | 'fr');
 
 // Get all team members and sort by order
