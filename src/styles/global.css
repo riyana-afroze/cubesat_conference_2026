@@ -152,6 +152,12 @@ a {
   padding: 0 1.5rem;
 }
 
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1rem;
+  }
+}
+
 /* Header Specifics */
 .header-nav-link {
   color: var(--color-text-muted);
@@ -200,11 +206,21 @@ a {
   border: none;
   cursor: pointer;
   text-align: center;
+  min-height: 44px;
+  min-width: 44px;
 }
 
 .btn:hover {
   transform: translateY(-2px);
   box-shadow: 0 5px 15px rgba(138, 43, 226, 0.4);
+}
+
+@media (max-width: 768px) {
+  .btn {
+    padding: 1rem 1.5rem;
+    width: 100%;
+    font-size: 0.95rem;
+  }
 }
 
 .glass-panel {
@@ -216,6 +232,13 @@ a {
   margin-bottom: 2rem;
 }
 
+@media (max-width: 768px) {
+  .glass-panel {
+    padding: 1.5rem;
+    border-radius: 12px;
+  }
+}
+
 .section-title {
   font-size: 2.5rem;
   text-align: center;
@@ -224,6 +247,12 @@ a {
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 1.8rem;
+  }
 }
 
 .highlight-link {

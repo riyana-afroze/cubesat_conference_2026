@@ -77,6 +77,23 @@ const { content, teamMembers } = Astro.props;
     width: calc((100% - 20rem) / 3);
     cursor: pointer;
   }
+  @media (max-width: 1024px) {
+    .team-grid {
+      gap: 3rem 5rem;
+    }
+    .team-member {
+      width: calc((100% - 10rem) / 2);
+    }
+  }
+  @media (max-width: 768px) {
+    .team-grid {
+      gap: 2.5rem;
+    }
+    .team-member {
+      width: 100%;
+      max-width: 300px;
+    }
+  }
   .team-member:hover .member-photo-placeholder {
     transform: scale(1.05);
     box-shadow: 0 0 20px rgba(224, 176, 255, 0.4);
@@ -150,6 +167,18 @@ const { content, teamMembers } = Astro.props;
     flex-direction: column;
     justify-content: center;
   }
+  @media (max-width: 768px) {
+    .modal {
+      width: 95%;
+      max-width: 95%;
+    }
+    .modal-content {
+      padding: 1.5rem;
+      min-height: auto;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+  }
   .close-modal {
     position: absolute;
     top: 1rem;
@@ -218,6 +247,24 @@ const { content, teamMembers } = Astro.props;
     color: white;
     white-space: pre-wrap;
     text-align: justify;
+  }
+  @media (max-width: 768px) {
+    .modal-body {
+      gap: 2rem;
+    }
+    #modal-name {
+      font-size: 1.5rem;
+    }
+    #modal-role {
+      font-size: 1rem;
+    }
+    #modal-bio {
+      font-size: 0.95rem;
+      text-align: left;
+    }
+    .modal-photo-placeholder {
+      max-width: 180px;
+    }
   }
   #modal-bio p {
     margin-bottom: 1rem;
