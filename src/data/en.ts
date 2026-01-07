@@ -7,12 +7,12 @@ export const homePageContent = {
   },
   aboutCCC: {
     title: "About the Canadian CubeSat Conference",
-    description: "The Canadian CubeSat Conference is a technical conference offered under the Canadian CubeSat Network initiative of SEDS-Canada, the country's largest student-led non-profit organisation in the space sector. This 2-day in-person event aims to bring together CubeSat enthusiasts, students, alumni, and industry experts to share knowledge, showcase research and projects, and foster meaningful connections to strengthen the rapidly growing CubeSat ecosystem across Canada."
+    description: "The Canadian CubeSat Conference (CCC 2026) is Canada's premier technical space conference for CubeSat and small satellite enthusiasts, organized under the Canadian CubeSat Network initiative of SEDS-Canada. This 2-day in-person aerospace conference in Montreal brings together CubeSat students, alumni, researchers, and industry experts from across Canada to share knowledge, showcase satellite research and CubeSat projects, and foster meaningful connections to strengthen Canada's rapidly growing small satellite and CubeSat ecosystem. Supported by the Canadian Space Agency (CSA) and MDA Space."
   },
   aboutCCN: {
     title: "About the Canadian CubeSat Network",
-    description1: "The Canadian CubeSat Network is a new initiative of SEDS-Canada in collaboration with MDA Space. The goal of CCN is to create a vibrant community of CubeSat, CanSat and SmallSat students, alumni, researchers and enthusiasts across Canada to enable the sharing of resources to build the next generation of space engineers in Canada.",
-    description2: "If you are a part of a CubeSat/CanSat/SmallSat student design team that is registered as a CCN Associate, you are eligible for discounts for the Canadian CubeSat Conference 2026. Reach out to your team leads for your discount code or ask them to sign your team up as a CCN Associate today!",
+    description1: "The Canadian CubeSat Network (CCN) is an innovative initiative of SEDS-Canada in collaboration with MDA Space. CCN creates a vibrant community of CubeSat, CanSat, and SmallSat students, alumni, researchers and space enthusiasts across Canada, enabling resource sharing and collaboration to build the next generation of Canadian space engineers and satellite technology leaders.",
+    description2: "If you are part of a CubeSat, CanSat, or SmallSat student design team registered as a CCN Associate, you are eligible for exclusive discounts for the Canadian CubeSat Conference 2026. Reach out to your team leads for your discount code or ask them to register your team as a CCN Associate today!",
     buttonText: "Become a CCN Associate"
   },
   funding: {
@@ -30,14 +30,14 @@ export const homePageContent = {
   },
   aboutSEDS: {
     title: "About SEDS-Canada",
-    description1: "SEDS-Canada (Students for the Exploration and Development of Space Canada) is Canada's largest student-led non-profit organization dedicated to empowering the next generation of Canadian space leaders. Re-established in 2014, SEDS-Canada connects post-secondary students and early-career professionals with meaningful opportunities in Canada's growing space sector.",
-    description2: "Through national projects, professional development initiatives, and industry-leading events, SEDS-Canada builds bridges between academia, government, and industry helping students turn their passion for space into tangible experience and career growth.",
+    description1: "SEDS-Canada (Students for the Exploration and Development of Space Canada) is Canada's largest student-led non-profit organization dedicated to empowering the next generation of Canadian space leaders and aerospace professionals. Re-established in 2014, SEDS-Canada connects post-secondary students and early-career professionals with meaningful opportunities in Canada's growing space sector and satellite industry.",
+    description2: "Through national space projects, professional development initiatives, and industry-leading space conferences like the Canadian CubeSat Conference, SEDS-Canada builds bridges between academia, government agencies like the Canadian Space Agency (CSA), and space industry partners, helping students turn their passion for space exploration into tangible experience and career growth in aerospace engineering.",
     buttonText: "Visit SEDS-Canada"
   },
   aboutSpaceConcordia: {
     title: "About SpaceConcordia",
-    description1: "SpaceConcordia is a student-run multidisciplinary association at Concordia University that designs and builds advanced space-related projects while promoting education, outreach, and innovation in aerospace and space sciences.",
-    description2: "SpaceConcordia has 5 primary divisions: Spacecraft, Rocketry, Solid Rocketry, Robotics and Space Health, each working towards the common mission to inspire the next generation of space professionals through providing opportunities to work on technically challenging projects that push the boundaries of what is possible for a university team.",
+    description1: "SpaceConcordia is a student-run multidisciplinary aerospace association at Concordia University in Montreal that designs and builds advanced space-related projects while promoting education, outreach, and innovation in aerospace and space sciences. As a leading Canadian student space organization, SpaceConcordia contributes to Canada's CubeSat and satellite development ecosystem.",
+    description2: "SpaceConcordia has 5 primary divisions: Spacecraft, Rocketry, Solid Rocketry, Robotics and Space Health, each working towards the common mission to inspire the next generation of space professionals through providing opportunities to work on technically challenging satellite and aerospace projects that push the boundaries of what is possible for a university team.",
     buttonText: "Visit SpaceConcordia"
   },
   footer: "© 2026 Canadian CubeSat Conference"

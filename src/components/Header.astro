@@ -23,7 +23,7 @@ const contactLink = lang === 'en' ? '/contact' : `/${lang}/contact`;
 
 // Toggle paths for language switching
 const toEn = currentPath.replace(/^\/fr/, '') || '/';
-const toFr = '/fr' + (currentPath === '/' ? '/' : currentPath);
+const toFr = currentPath.startsWith('/fr') ? currentPath : '/fr' + (currentPath === '/' ? '' : currentPath);
 
 const isEn = lang === 'en';
 

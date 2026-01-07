@@ -4,23 +4,137 @@ import '../styles/global.css';
 interface Props {
 	title: string;
     lang: 'en' | 'fr';
+    description?: string;
+    keywords?: string;
+    ogImage?: string;
+    canonical?: string;
 }
 
-const { title, lang } = Astro.props;
+const { 
+    title, 
+    lang,
+    description = "Canadian CubeSat Conference 2026 - Canada's premier technical conference for CubeSat enthusiasts, students, and industry experts. Organized by SEDS-Canada and the Canadian CubeSat Network.",
+    keywords = "Canadian CubeSat Conference, CubeSat, SEDS Canada, SEDS-Canada, Canadian CubeSat Network, CSA, Canadian Space Agency, space conference, satellite conference, small satellite, CanSat, SmallSat, space engineering, aerospace conference, MDA Space, Space Concordia",
+    ogImage = "/og-image.jpg",
+    canonical = Astro.url.pathname
+} = Astro.props;
+
+const siteUrl = Astro.site || 'https://canadiancubesatconference.ca';
+const canonicalURL = new URL(canonical, siteUrl).href;
+const fullOgImage = new URL(ogImage, siteUrl).href;
 ---
 
 <!doctype html>
 <html lang={lang}>
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content="Canadian CubeSat Conference 2026" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		
+		<!-- Primary Meta Tags -->
+		<title>{title}</title>
+		<meta name="title" content={title} />
+		<meta name="description" content={description} />
+		<meta name="keywords" content={keywords} />
+		<meta name="author" content="SEDS-Canada, Canadian CubeSat Network" />
+		<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
 		<meta name="generator" content={Astro.generator} />
+		
+		<!-- Canonical URL -->
+		<link rel="canonical" href={canonicalURL} />
+		
+		<!-- Language Alternates -->
+		<link rel="alternate" hreflang="en" href={new URL('/en', siteUrl).href} />
+		<link rel="alternate" hreflang="fr" href={new URL('/fr', siteUrl).href} />
+		<link rel="alternate" hreflang="x-default" href={new URL('/', siteUrl).href} />
+		
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={canonicalURL} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={fullOgImage} />
+		<meta property="og:locale" content={lang === 'fr' ? 'fr_CA' : 'en_CA'} />
+		<meta property="og:site_name" content="Canadian CubeSat Conference 2026" />
+		
+		<!-- Twitter Card -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:url" content={canonicalURL} />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={fullOgImage} />
+		
+		<!-- Favicons -->
+		<link rel="icon" type="image/x-icon" href="/favicons/favicon.ico" />
+		<link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png" />
+		<link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png" />
+		<link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png" />
+		<link rel="manifest" href="/favicons/site.webmanifest" />
+		
+		<!-- Preconnect to external domains -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
-		<title>{title}</title>
+        
+        <!-- JSON-LD Structured Data for Event -->
+        <script type="application/ld+json" set:html={JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Event",
+            "name": "Canadian CubeSat Conference 2026",
+            "description": "Canada's premier technical conference for CubeSat enthusiasts, students, alumni, and industry experts. A 2-day event bringing together the CubeSat community to share knowledge and foster connections.",
+            "startDate": "2026-03-20",
+            "endDate": "2026-03-21",
+            "eventStatus": "https://schema.org/EventScheduled",
+            "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+            "location": {
+                "@type": "Place",
+                "name": "Concordia University",
+                "address": {
+                    "@type": "PostalAddress",
+                    "addressLocality": "Montreal",
+                    "addressRegion": "QC",
+                    "addressCountry": "CA"
+                }
+            },
+            "organizer": {
+                "@type": "Organization",
+                "name": "SEDS-Canada",
+                "url": "https://seds.ca",
+                "logo": "https://seds.ca/logo.png"
+            },
+            "sponsor": [
+                {
+                    "@type": "Organization",
+                    "name": "Canadian Space Agency",
+                    "url": "https://www.asc-csa.gc.ca/"
+                },
+                {
+                    "@type": "Organization",
+                    "name": "MDA Space",
+                    "url": "https://mda.space/"
+                }
+            ],
+            "keywords": "CubeSat, satellite, space conference, SEDS Canada, Canadian Space Agency, aerospace, engineering",
+            "url": siteUrl
+        })} />
+        
+        <!-- JSON-LD Structured Data for Organization -->
+        <script type="application/ld+json" set:html={JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "Canadian CubeSat Conference",
+            "url": siteUrl,
+            "logo": new URL("/logo.png", siteUrl).href,
+            "description": "Canada's premier technical conference for CubeSat enthusiasts organized by SEDS-Canada and the Canadian CubeSat Network",
+            "parentOrganization": {
+                "@type": "Organization",
+                "name": "SEDS-Canada",
+                "url": "https://seds.ca"
+            },
+            "sameAs": [
+                "https://seds.ca",
+                "https://spaceconcordia.ca"
+            ]
+        })} />
 	</head>
 	<body>
 		<slot />

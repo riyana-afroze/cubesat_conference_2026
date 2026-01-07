@@ -58,9 +58,9 @@ const links = {
 
 <main class="container">
   <!-- Hero Section -->
-  <section class="hero">
-    <h1 class="hero-title">{content.heroTitle}</h1>
-    <img src="/CCC_2026_logo.png" alt="Canadian CubeSat Conference 2026 Logo" class="hero-logo" />
+  <section class="hero" itemscope itemtype="https://schema.org/Event">
+    <h1 class="hero-title" itemprop="name">{content.heroTitle}</h1>
+    <img src="/CCC_2026_logo.png" alt="Canadian CubeSat Conference 2026 Logo - Canada's Premier Space Conference for CubeSat and Satellite Technology" class="hero-logo" itemprop="image" />
     <div class="cta-group">
       <a href={links.tickets} class="btn" target="_blank" rel="noopener noreferrer">{content.heroButtons.tickets}</a>
       <a href={links.booth} class="btn btn-outline" target="_blank" rel="noopener noreferrer">{content.heroButtons.booth}</a>
@@ -80,7 +80,7 @@ const links = {
   <section class="info-section">
     <h2 class="section-title">{content.aboutCCN.title}</h2>
     <div class="glass-panel">
-      <img src="/CCN_logo.png" alt="Canadian CubeSat Network Logo" class="ccn-logo" />
+      <img src="/CCN_logo.png" alt="Canadian CubeSat Network Logo - SEDS-Canada and MDA Space Initiative for CubeSat Students" class="ccn-logo" />
       <p>{content.aboutCCN.description1}</p>
       <p>{content.aboutCCN.description2}</p>
       <a href={links.ccn} class="btn" target="_blank" rel="noopener noreferrer">{content.aboutCCN.buttonText}</a>
@@ -91,7 +91,7 @@ const links = {
   <section class="info-section">
     <h2 class="section-title">{content.funding.title}</h2>
     <div class="glass-panel highlight-panel">
-      <img src="/CSA_logo.png" alt="Canadian Space Agency Logo" class="csa-logo" />
+      <img src="/CSA_logo.png" alt="Canadian Space Agency (CSA) Logo - Government of Canada Space Program Funding" class="csa-logo" />
       <h3>{content.funding.subtitle}</h3>
       <p>{content.funding.description1}</p>
       <p>{content.funding.eligibilityIntro}</p>
@@ -109,7 +109,7 @@ const links = {
     <section class="info-section">
       <h2 class="section-title">{content.aboutSEDS.title}</h2>
       <div class="glass-panel">
-        <img src="/SEDS_circle_logo.png" alt="SEDS-Canada Logo" class="section-logo" />
+        <img src="/SEDS_circle_logo.png" alt="SEDS-Canada Logo - Students for the Exploration and Development of Space Canada" class="section-logo" />
         <p>{content.aboutSEDS.description1}</p>
         <p>{content.aboutSEDS.description2}</p>
         <a href={links.seds} class="btn btn-secondary" target="_blank" rel="noopener noreferrer">{content.aboutSEDS.buttonText}</a>
@@ -119,7 +119,7 @@ const links = {
     <section class="info-section">
       <h2 class="section-title">{content.aboutSpaceConcordia.title}</h2>
       <div class="glass-panel">
-        <img src="/SpaceConcordia_logo.png" alt="SpaceConcordia Logo" class="spaceconcordia-logo" />
+        <img src="/SpaceConcordia_logo.png" alt="SpaceConcordia Logo - Concordia University Student Aerospace Association" class="spaceconcordia-logo" />
         <p>{content.aboutSpaceConcordia.description1}</p>
         <p>{content.aboutSpaceConcordia.description2}</p>
         <a href={links.spaceconcordia} class="btn btn-secondary" target="_blank" rel="noopener noreferrer">{content.aboutSpaceConcordia.buttonText}</a>
