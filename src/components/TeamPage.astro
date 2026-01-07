@@ -55,13 +55,17 @@ const { content, teamMembers, footer } = Astro.props;
           <div class="modal-photo-placeholder">
             <img id="modal-image" src="" alt="" />
           </div>
-          <a id="modal-linkedin" href="" target="_blank" rel="noopener noreferrer" class="linkedin-icon-large" style="display: none;">
-            <img src="/icons/linkedin.svg" alt="LinkedIn" />
-          </a>
         </div>
         <div class="modal-text">
-          <h2 id="modal-name"></h2>
-          <p id="modal-role"></p>
+          <div class="modal-header">
+            <div>
+              <h2 id="modal-name"></h2>
+              <p id="modal-role"></p>
+            </div>
+            <a id="modal-linkedin" href="" target="_blank" rel="noopener noreferrer" class="linkedin-icon-large" style="display: none;">
+              <img src="/icons/linkedin.svg" alt="LinkedIn" />
+            </a>
+          </div>
           <p id="modal-bio"></p>
         </div>
       </div>
@@ -147,12 +151,13 @@ const { content, teamMembers, footer } = Astro.props;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 0.5rem;
+    gap: 1rem;
   }
   .linkedin-icon-small {
     display: inline-flex;
     align-items: center;
     transition: transform 0.3s ease;
+    filter: brightness(0) saturate(100%) invert(87%) sepia(25%) saturate(1043%) hue-rotate(215deg) brightness(104%) contrast(101%);
   }
   .linkedin-icon-small img {
     width: 20px;
@@ -245,15 +250,23 @@ const { content, teamMembers, footer } = Astro.props;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 1rem;
+  }
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
   }
   .linkedin-icon-large {
     display: inline-flex;
     transition: transform 0.3s ease;
+    filter: brightness(0) saturate(100%) invert(87%) sepia(25%) saturate(1043%) hue-rotate(215deg) brightness(104%) contrast(101%);
+    flex-shrink: 0;
   }
   .linkedin-icon-large img {
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
   }
   .linkedin-icon-large:hover {
     transform: scale(1.1);
@@ -288,7 +301,7 @@ const { content, teamMembers, footer } = Astro.props;
   }
   #modal-role {
     font-size: 1.2rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 0;
     color: var(--color-text-muted);
   }
   #modal-bio {

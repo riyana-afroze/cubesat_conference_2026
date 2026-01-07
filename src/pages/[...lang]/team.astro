@@ -26,6 +26,7 @@ const teamMembers = sortedTeamMembers.map(member => ({
   role: lang === 'fr' && member.data.role.fr ? member.data.role.fr : member.data.role.en,
   bio: lang === 'fr' && member.data.bioFr ? member.data.bioFr : member.data.bio,
   image: member.data.image,
+  linkedin: member.data.linkedin,
 }));
 
 const titles = {

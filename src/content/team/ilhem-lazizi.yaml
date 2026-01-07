@@ -4,6 +4,7 @@ role:
   # fr: "Poste"  # Optional - will use English if not provided
 order: 2
 # image: "/people/member-2.png"  # Uncomment when you add a photo
+linkedin: "https://www.linkedin.com/in/ilhem-lazizi-a7986925b/"
 bio: |
   Bio and headshot will be available shortly
 # bioFr: |  # Optional - will use English bio if not provided

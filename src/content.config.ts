@@ -12,6 +12,7 @@ const teamCollection = defineCollection({
     bio: z.string(),
     bioFr: z.string().optional(),
     order: z.number(),
+    linkedin: z.string().optional(),
   }),
 });
 

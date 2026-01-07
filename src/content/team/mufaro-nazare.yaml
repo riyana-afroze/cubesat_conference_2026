@@ -4,6 +4,7 @@ role:
   # fr: "Poste"
 order: 3
 image: "/people/mufaro.png"  # Uncomment when you add a photo
+linkedin: "https://www.linkedin.com/in/mufaro-nazare-74637b318/"
 bio: |
   Mufaro is a Mechanical Engineering major currently studying at Concordia University in Montreal. She is a past international representative for the science fair team at her home country and has participated in multiple international acclaimed fairs winning both silver and gold medals. She is currently responsible for managing the social media content for all four national projects at SEDS-Canada. Mufaro has an incredible love for space travel and spacecraft design which is her main area of interest in the space industry.
 # bioFr: |  # Optional - will use English bio if not provided
