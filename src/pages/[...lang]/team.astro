@@ -36,5 +36,5 @@ const titles = {
 
 <Layout title={titles[lang as keyof typeof titles]} lang={lang as 'en' | 'fr'}>
   <Header lang={lang as 'en' | 'fr'} />
-  <TeamPage content={content.team} teamMembers={teamMembers} />
+  <TeamPage content={content.team} teamMembers={teamMembers} footer={content.home.footer} />
 </Layout>

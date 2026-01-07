@@ -31,7 +31,7 @@ export const homePageContent = {
       "be enrolled in a Canadian post-secondary institution at the college, undergraduate, master's or doctoral levels at the time of the event."
     ],
     description2: "Although not an eligibility requirement, priority may be given to students who have been selected by the organizing committee to give a presentation (oral or poster) during the event. Priority may also be given to applicants from underrepresented populations. The CSA therefore encourages applicants to indicate, on a voluntary basis, if they belong to one or more of the four following groups: women, Indigenous Peoples, persons with disabilities and members of visible minorities.",
-    description3: 'Instructions on how to submit an application can be found in <a href="https://www.asc-csa.gc.ca/eng/funding-programs/funding-opportunities/ao/2023-canadian-student-participation-in-space-conferences-and-training-events.asp#4" class="highlight-link" target="_blank" rel="noopener noreferrer">Section 4</a> of the AO. Please read these instructions carefully and submit your application to the CSA no later than January 13, 2026 at 1:00 PM (EST).',
+    description3: 'Instructions on how to submit an application can be found in <a href="https://www.asc-csa.gc.ca/eng/funding-programs/funding-opportunities/ao/2023-canadian-student-participation-in-space-conferences-and-training-events.asp#4" class="highlight-link" target="_blank" rel="noopener noreferrer">Section 4</a> of the AO. Please read these instructions carefully and submit your application to the CSA no later than January 20, 2026 at 1:00 PM (EST).',
     buttonText: "Apply Now"
   },
   aboutSEDS: {

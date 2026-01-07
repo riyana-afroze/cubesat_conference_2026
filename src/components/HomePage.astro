@@ -67,7 +67,8 @@ const links = {
   <section class="hero" itemscope itemtype="https://schema.org/Event">
     <h1 class="hero-title" itemprop="name">{content.heroTitle}</h1>
     <img src="/CCC_2026_logo.png" alt="Canadian CubeSat Conference 2026 Logo - Canada's Premier Space Conference for CubeSat and Satellite Technology" class="hero-logo" itemprop="image" />
-    <p class="conference-dates" itemprop="startDate" content="2026-03-07">{content.dates}</p>
+    <meta itemprop="startDate" content="2026-03-07" />
+    <p class="conference-dates">{content.dates}</p>
     <a 
       href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${content.venue.name}, ${content.venue.address}`)}`}
       class="venue-address"
@@ -172,7 +173,7 @@ const links = {
     font-size: 2rem;
     font-weight: 600;
     color: #fff;
-    margin: 1rem 0 2rem 0;
+    margin: 1rem 0 1rem 0;
     letter-spacing: 0.5px;
   }
   .venue-address {
@@ -183,7 +184,7 @@ const links = {
     color: #fff;
     text-decoration: none;
     line-height: 1.6;
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
     transition: all 0.3s ease;
     position: relative;
   }
@@ -253,6 +254,5 @@ const links = {
     text-align: center;
     padding: 2rem 0;
     margin-top: 4rem;
-    border-top: 1px solid rgba(255,255,255,0.1);
   }
 </style>

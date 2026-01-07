@@ -18,9 +18,10 @@ interface Props {
       message: string;
     };
   };
+  footer: string;
 }
 
-const { content } = Astro.props;
+const { content, footer } = Astro.props;
 ---
 
 <main class="container">
@@ -54,7 +55,16 @@ const { content } = Astro.props;
   </section>
 </main>
 
+<footer class="site-footer">
+  <p>{footer}</p>
+</footer>
+
 <style>
+  .site-footer {
+    text-align: center;
+    padding: 2rem 0;
+    margin-top: 4rem;
+  }
   .contact-section {
     max-width: 800px;
     margin: 4rem auto;
