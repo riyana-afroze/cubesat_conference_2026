@@ -2,6 +2,12 @@
 interface Props {
   content: {
     heroTitle: string;
+    dates: string;
+    venue: {
+      name: string;
+      university: string;
+      address: string;
+    };
     heroButtons: {
       tickets: string;
       booth: string;
@@ -61,6 +67,21 @@ const links = {
   <section class="hero" itemscope itemtype="https://schema.org/Event">
     <h1 class="hero-title" itemprop="name">{content.heroTitle}</h1>
     <img src="/CCC_2026_logo.png" alt="Canadian CubeSat Conference 2026 Logo - Canada's Premier Space Conference for CubeSat and Satellite Technology" class="hero-logo" itemprop="image" />
+    <p class="conference-dates" itemprop="startDate" content="2026-03-07">{content.dates}</p>
+    <a 
+      href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${content.venue.name}, ${content.venue.address}`)}`}
+      class="venue-address"
+      target="_blank"
+      rel="noopener noreferrer"
+      itemprop="location"
+    >
+      <div class="venue-content">
+        <div>{content.venue.name}</div>
+        <div>{content.venue.university}</div>
+        <div>{content.venue.address}</div>
+      </div>
+      <img src="/icons/location.svg" alt="Location pin" class="location-icon" />
+    </a>
     <div class="cta-group">
       <a href={links.tickets} class="btn" target="_blank" rel="noopener noreferrer">{content.heroButtons.tickets}</a>
       <a href={links.booth} class="btn btn-outline" target="_blank" rel="noopener noreferrer">{content.heroButtons.booth}</a>
@@ -146,6 +167,46 @@ const links = {
     background: linear-gradient(to right, #fff, #ff00ff);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+  }
+  .conference-dates {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #fff;
+    margin: 1rem 0 2rem 0;
+    letter-spacing: 0.5px;
+  }
+  .venue-address {
+    display: inline-flex;
+    align-items: center;
+    gap: 0;
+    font-size: 1.1rem;
+    color: #fff;
+    text-decoration: none;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    transition: all 0.3s ease;
+    position: relative;
+  }
+  .venue-content {
+    text-align: center;
+    transition: all 0.3s ease;
+  }
+  .location-icon {
+    width: 0;
+    height: 50px;
+    opacity: 0;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+    overflow: hidden;
+  }
+  .venue-address:hover .location-icon {
+    opacity: 1;
+    width: 50px;
+    margin-left: 1rem;
+  }
+  .venue-content div:first-child {
+    font-weight: 600;
+    font-size: 1.2rem;
   }
   .glass-panel p {
     text-align: justify;

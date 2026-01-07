@@ -1,5 +1,11 @@
 export const homePageContent = {
   heroTitle: "CANADIAN CUBESAT CONFERENCE 2026",
+  dates: "March 7th to 8th, 2026",
+  venue: {
+    name: "John Molson School of Business",
+    university: "Concordia University",
+    address: "1450 Rue Guy, Montréal, QC H3H 0A1"
+  },
   heroButtons: {
     tickets: "Buy Tickets",
     booth: "Reserve a Booth",
